@@ -94,3 +94,13 @@ docker exec -it $CONT_NAME runuser -u `id -u -n` -- bash -c "cd \$CONT_PWD && ex
 docker stop $CONT_NAME
 docker remove $CONT_NAME
 ```
+
+## Access VSCode Dev Container outside VSCode
+
+A Docker container that is run by the VSCode Dev Container environment can be 
+accessed in any terminal by using the following command.
+
+```bash
+CONT_NAME="openwalker_devcont"
+docker exec -it $CONT_NAME runuser -u devel -- bash -c "cd \$CONT_PWD && export CONT_PWD_AUTO_SOURCE_SETUP=true && bash"
+```
